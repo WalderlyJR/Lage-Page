@@ -47,16 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
      PROVA SOCIAL (notificação)
   ========================= */
   const names = [
-  "Lucas", "Ana COMPROU", "Rafael", "Mariana", "João",
-  "Fernanda", "Carlos", "Juliana COMPROU", "Bruno", "Camila",
+  "Lucas", "Ana", "Rafael", "Mariana", "João",
+  "Fernanda", "Carlos", "Juliana", "Bruno", "Camila",
 
-  "Pedro", "Larissa COMPROU", "Gabriel", "Amanda", "Felipe",
+  "Pedro", "Larissa", "Gabriel", "Amanda", "Felipe",
   "Bianca", "Rodrigo", "Tatiane", "Diego", "Vanessa",
 
-  "Matheus", "Letícia COMPROU", "Gustavo", "Patrícia", "Vinicius",
+  "Matheus", "Letícia", "Gustavo", "Patrícia", "Vinicius",
   "Priscila", "André", "Renata", "Leonardo", "Simone",
 
-  "Thiago COMPROU", "Beatriz", "Eduardo", "Carla", "Marcelo",
+  "Thiago", "Beatriz", "Eduardo", "Carla", "Marcelo",
   "Natália", "Caio", "Aline", "Henrique", "Cristiane",
 
   "Fernando", "Kelly", "Ricardo", "Débora", "Alexandre",
@@ -65,8 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
   "Roberto", "Michele", "Fábio", "Sabrina", "Maurício",
   "Monique", "Jonathan", "Rafaela", "Otávio", "Larissa",
 
-  "Igor", "Bruna", "César COMPROU", "Juliano", "Adriana",
-  "Alan", "Eliane", "Douglas COMPROU", "Elaine", "Robson",
+  "Igor", "Bruna", "César", "Juliano", "Adriana",
+  "Alan", "Eliane", "Douglas", "Elaine", "Robson",
 
   "Leandro", "Valéria", "Samuel", "Fabiana", "Victor",
   "Viviane", "William", "Cláudia", "Renan", "Daniele",
@@ -77,26 +77,36 @@ document.addEventListener("DOMContentLoaded", () => {
   "Arthur", "Yasmin", "Enzo", "Gabriela", "Heitor",
   "Luana", "Miguel", "Alice", "Davi", "Helena"
 ];
-  const notification = document.getElementById("liveNotification");
-  const nameEl = document.getElementById("liveName");
+  const actions = [
+  "acabou de acessar o sistema",
+  "entrou agora",
+  "começou a usar",
+  "acabou de comprar",
+  "garantiu acesso agora"
+];
 
-  function showNotification() {
-    if (!notification || !nameEl) return;
+const notification = document.getElementById("liveNotification");
+const nameEl = document.getElementById("liveName");
 
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    nameEl.textContent = randomName;
+function showNotification() {
+  if (!notification || !nameEl) return;
 
-    notification.classList.add("show");
+  const randomName = names[Math.floor(Math.random() * names.length)];
+  const randomAction = actions[Math.floor(Math.random() * actions.length)];
 
-    setTimeout(() => {
-      notification.classList.remove("show");
-    }, 3000);
-  }
+  nameEl.textContent = `${randomName} ${randomAction}`;
 
-  // aparece a cada 5 segundos
-  setInterval(showNotification, 25000);
+  notification.classList.add("show");
 
-  // primeira aparição rápida
-  setTimeout(showNotification, 2000);
+  setTimeout(() => {
+    notification.classList.remove("show");
+  }, 3000);
+}
+
+// intervalo (melhor frequência)
+setInterval(showNotification, 8000);
+
+// primeira aparição
+setTimeout(showNotification, 3000);
 
 });

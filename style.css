@@ -729,6 +729,15 @@ body {
 .deliver-section .container,
 .bonus-section .container {
   text-align: center;
+}.split-video {
+  width: 400px;
+  border-radius: 15px;
+  object-fit: cover;
+}@media (max-width: 900px) {
+  .split-video {
+    width: 100%;
+    max-width: 300px;
+  }
 }
 
 /* RESPONSIVE */
